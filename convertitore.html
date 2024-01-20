@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Convertitore di Valuta</title>
+    <script type="text/javascript">
+        function convertiValuta() {
+            // Ottieni l'importo e le valute di origine e destinazione
+            var importo = parseFloat(document.getElementById("importo").value);
+            var valutaOrigine = document.getElementById("valutaOrigine").value;
+            var valutaDestinazione = document.getElementById("valutaDestinazione").value;
+
+            // Definisci il tasso di cambio (questo è solo un esempio, dovresti utilizzare un servizio di cambio reale)
+            var tassiCambio = {
+                "EUR-USD": 1.12,
+                "EUR-HUF": 383,
+            };
+
+            // Effettua la conversione
+            var risultato = importo * tassiCambio[valutaOrigine + "-" + valutaDestinazione];
+
+            // Mostra il risultato
+            document.getElementById("risultato").innerHTML = "Importo convertito: " + risultato.toFixed(2) + " " + valutaDestinazione;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Convertitore di Valuta</h1>
+
+    <label for="importo">Importo:</label>
+    <input type="text" id="importo">
+
+    <label for="valutaOrigine">Da Valuta:</label>
+    <select id="valutaOrigine">
+        <option value="EUR">Euro</option>
+    </select>
+
+    <label for="valutaDestinazione">A Valuta:</label>
+    <select id="valutaDestinazione">
+        <option value="USD">Dollaro USA</option>
+        <option value="HUF">Fiorino Ungherese</option>
+    </select>
+
+    <button onclick="convertiValuta()">Converti</button>
+
+    <p id="risultato"></p>
+</body>
+
+</html>
